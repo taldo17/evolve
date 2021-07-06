@@ -13,13 +13,15 @@ export const SignIn = () => {
     const [errorMessage, setErrorMessage] = useState('');
     const history = useHistory();
     const onSignInClicked = async () => {
-        alert ('email='+emailValue+ 'password='+passwordValue);
         try {
-            signIn(emailValue, passwordValue);
+            console.log ('before signIn email='+emailValue+ 'password='+passwordValue);
+            await signIn(emailValue, passwordValue);
+            console.log ('after signIn email='+emailValue+ 'password='+passwordValue);
             // rout to home page
             history.push('/');
+            console.log ('after redirect');
         } catch (e) {
-            console.error(e.message);
+            console.log('Failed in onSignInClicked ' , e.message);
             setErrorMessage(e.message);
         }
     }
