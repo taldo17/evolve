@@ -4,3 +4,6 @@ export { signIn } from './signIn';
 export { signUp } from './signUp';
 export { signOut } from './signOut';
 export { getCurrentUser } from './getCurrentUser';
+export { useAuth } from './useAuth';
+export { addAuthListener } from './addAuthListener';
+export { ProtectedRoute } from './ProtectedRoute';

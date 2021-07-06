@@ -1,16 +1,28 @@
 import React from 'react'
 import {Link} from "react-router-dom";
 import {ReactComponent as Logo} from "../../assets/nice_logo_error_page.svg";
+import {signOut} from '../../firebase/signOut';
 import './header.scss'
 
-const Header = ()=>{
+const Header = ({user, userDetails}) => {
+    const onClickSignOut = async () => {
+        try {
+            // Firebase code goes here
+            await signOut();
+        } catch (e) {
+            alert(e.message);
+        }
+    }
     return (
         <div className='header'>
+            <p>userDetails= {JSON.stringify(userDetails)}</p>
+
             <Link className='logo-container' to='/'>
                 <Logo className='logo'/>
             </Link>
             <div className='options'>
-                <Link className='option' to='/signin'>SIGN IN</Link>
+                {!user && <Link className='option' to='/signin'>SIGN IN</Link> }
+                {user && <Link className='option' to='/' onClick={onClickSignOut}>SIGN OUT</Link>}
                 <Link className='option' to='/contact'>CONTACT</Link>
                 <Link className='option' to='/about'>ABOUT</Link>
             </div>
