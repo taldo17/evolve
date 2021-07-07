@@ -34,6 +34,9 @@ export function App({firebaseConfig}) {
             console.log('authInfo was changed newUserDetails=', newUserDetails);
             setUserDetails(newUserDetails)
         }
+        else{
+            setUserDetails(undefined);
+        }
     }, [authInfo])
 
     console.log("firebaseConfig:", firebaseConfig)

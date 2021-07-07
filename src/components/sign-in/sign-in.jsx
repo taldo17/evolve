@@ -14,10 +14,7 @@ export const SignIn = () => {
     const history = useHistory();
     const onSignInClicked = async () => {
         try {
-            console.log ('before signIn email='+emailValue+ 'password='+passwordValue);
             await signIn(emailValue, passwordValue);
-            console.log ('after signIn email='+emailValue+ 'password='+passwordValue);
-            // rout to home page
             history.push('/');
             console.log ('after redirect');
         } catch (e) {
@@ -59,7 +56,7 @@ export const SignIn = () => {
 
                 <div className='buttons'>
                     <CustomButton type='button' onClick={onSignInClicked}>Sign in</CustomButton>
-                    <CustomButton type='button' onClick={onSignInWithGoogleClicked} isGoogleSignIn>Sign in with Google</CustomButton>
+                    <CustomButton type='button' onClick={onSignInWithGoogleClicked} isGoogleSignIn>Google Sign in</CustomButton>
                 </div>
             </form>
         </div>
