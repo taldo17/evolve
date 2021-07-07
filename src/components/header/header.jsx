@@ -15,8 +15,6 @@ const Header = ({user, userDetails}) => {
     }
     return (
         <div className='header'>
-            <p>userDetails= {JSON.stringify(userDetails)}</p>
-
             <Link className='logo-container' to='/'>
                 <Logo className='logo'/>
             </Link>
