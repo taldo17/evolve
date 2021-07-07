@@ -5,9 +5,10 @@ import SignInAndSignUp from "./pages/sign-in-and-sign-up/sign-in-and-sign-up"
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import Header from './components/header/header'
 import React, {useEffect, useState} from "react";
-import {addAuthListener, getCurrentUser, getUserDetails, ProtectedRoute} from './firebase';
+import {addAuthListener, getCurrentUser, ProtectedRoute} from './firebase/auth';
+import {getUserDetails} from './firebase/database';
 
-export function App() {
+export function App({firebaseConfig}) {
     const [authInfo, setAuthInfo] = useState(() => {
             const user = getCurrentUser();
             const isLoading = !user;
@@ -33,7 +34,7 @@ export function App() {
             let newUserDetails = await getUserDetails(authInfo.user.uid);
             console.log('authInfo was changed newUserDetails=', newUserDetails);
             newUserDetails = {
-                evolveUser: {profileImageLink: 'https://pixabay.com/photos/fish-coral-sea-underwater-reef-2580208/'},
+                evolveUser: {profileImageLink: `https://storage.googleapis.com/${firebaseConfig.storageBucket}/profilePictures/headshot.png`},
                 graphDetails: {
                     dataLabels: "dddggggg",
                     label1: "dddd",
@@ -45,6 +46,7 @@ export function App() {
     }, [authInfo])
 
     console.log("ida1:", userDetails)
+    console.log("firebaseConfig:", firebaseConfig)
     return (
         <Router>
             <Header user={authInfo.user} userDetails={userDetails}/>

@@ -2,10 +2,11 @@ import React, {useState} from 'react'
 
 import FormInput from "../form-input/form-input";
 import CustomButton from "../custom-button/custom-button2";
-import {createUserProfileDocument, signUp} from "../../firebase";
+import {signUp} from "../../firebase/auth";
+import {createUserProfileDocument} from "../../firebase/database";
 import './sign-up.scss'
 import {useHistory} from "react-router-dom";
-import {ErrorMessage} from "../../ui";
+import {ErrorMessage, UploadSingleFileButton} from "../../ui";
 import 'firebase/auth'
 
 export const SignUp = () => {
@@ -13,6 +14,7 @@ export const SignUp = () => {
     const [emailValue, setEmailValue] = useState('');
     const [passwordValue, setPasswordValue] = useState('');
     const [confirmedPasswordValue, setConfirmedPasswordValue] = useState('');
+    const [profilePictureFile, setProfilePictureFile] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
     const history = useHistory();
     const onSignUpClicked = async () => {
@@ -23,7 +25,7 @@ export const SignUp = () => {
         try {
             alert('emailValue=' + emailValue + ' passwordValue=' + passwordValue + ' displayName=' + displayName)
             const {user} = await signUp(emailValue, passwordValue);
-            await createUserProfileDocument(user, displayName);
+            await createUserProfileDocument(user, displayName, profilePictureFile);
             // rout to home page
             history.push('/');
         } catch (e) {
@@ -31,7 +33,9 @@ export const SignUp = () => {
             setErrorMessage(e.message);
         }
     }
-
+    const handleFileSelect = file => {
+        setProfilePictureFile(file);
+    }
     return (
         <div className='sign-up'>
             <h1>I don't have an account</h1>
@@ -76,6 +80,8 @@ export const SignUp = () => {
                     label='Confirmed Password'
                     required>
                 </FormInput>
+                <UploadSingleFileButton
+                    onFileUploaded={handleFileSelect}/>
                 <CustomButton type='button' onClick={onSignUpClicked}>SIGN UP</CustomButton>
 
             </form>

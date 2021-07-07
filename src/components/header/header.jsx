@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link} from "react-router-dom";
 import {ReactComponent as Logo} from "../../assets/nice_logo_error_page.svg";
-import {signOut} from '../../firebase/signOut';
+import {signOut} from '../../firebase/auth';
 import './header.scss'
 
 const Header = ({user, userDetails}) => {
