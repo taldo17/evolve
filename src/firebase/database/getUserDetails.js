@@ -13,8 +13,8 @@ export const getUserDetails = async id => {
                 return 'GOLD';
             case (score < 40):
                 return 'PLATINUM';
-            return 'VIBRANIUM';
         }
+        return 'VIBRANIUM';
     }
     const getFunction = () => firebase.firestore()
         .collection('users')
