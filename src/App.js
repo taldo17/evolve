@@ -18,7 +18,6 @@ export function App() {
 
     useEffect(() => {
         const unsubscribe = addAuthListener(async user => {
-            console.log('useEffect called  user=', user, 'userDetails=', userDetails);
             setAuthInfo(({isLoading: false, user}));
         })
         return unsubscribe;
@@ -52,17 +51,53 @@ export function App() {
                 <Route path='/signin'>
                     <SignInAndSignUp/>
                 </Route>
-                <ProtectedRoute isAuthed={!!authInfo.user} isLoading={authInfo.isLoading} userDetails={userDetails}
-                                path='/evolve/devops'>
+                <Route path='/evolve/devops'>
                     <Devops/>
-                </ProtectedRoute>
-                <Route isAuthed={!!authInfo.user} isLoading={authInfo.isLoading} userDetails={userDetails} path='/'
-                       exact>
+                </Route>
+                <Route path='/' exact>
                     <Homepage userDetails={userDetails}/>
                 </Route>
             </Switch>
         </Router>
     );
+}
+
+const data = {
+    evolveUser: {
+        displayName: 'Tal Doron',
+        email: 'tal@gmail.com',
+        profileImageUrl: 'https://storage.googleapis.com/evolve-sparkaton-2021.appspot.com/profilePictures/headshot.png',
+        firstLevelGroup: 'MCR',
+        secondLevelGroup: 'PTU'
+    },
+    statistics: {
+        userStatistics: {
+            devopsLevel: 'NOVICE | SILVER | GOLD | PLATINUM | VIBRANIUM', //calculated
+            securityLevel: 'NOVICE | SILVER | GOLD | PLATINUM | VIBRANIUM', //calculated
+            architectureLevel: 'NOVICE | SILVER | GOLD | PLATINUM | VIBRANIUM', //calculated
+            codeFELevel: 'NOVICE | SILVER | GOLD | PLATINUM | VIBRANIUM',//calculated
+            codeBELevel: 'NOVICE | SILVER | GOLD | PLATINUM | VIBRANIUM',//calculated
+            devopsScore: 0,
+            securityScore: 0,
+            architectureScore: 0,
+            codeFEScore: 0,
+            codeBEScore: 0,
+        },
+        firstLevelGroup: {
+            devopsScore: 0,
+            securityScore: 0,
+            architectureScore: 0,
+            codeFEScore: 0,
+            codeBEScore: 0,
+        },
+        secondLevelGroup: {
+            devopsScore: 0,
+            securityScore: 0,
+            architectureScore: 0,
+            codeFEScore: 0,
+            codeBEScore: 0,
+        }
+    }
 }
 
 export default App
