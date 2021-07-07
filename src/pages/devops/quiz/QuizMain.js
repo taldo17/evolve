@@ -4,6 +4,7 @@ import Answer from './answer/Answer';
 import './QuizMain.css';
 import {evolveSections} from "../../../data/data";
 import MenuItem from "../../../components/menu-item/menu-item";
+import UpdateUserButton from "../../../components/custom-button/custom-update-user-button";
 
 export default class Quiz extends Component {
 
@@ -69,7 +70,8 @@ export default class Quiz extends Component {
         });
     }
 
-    render(props) {
+    render() {
+        // console.log('Quiz', props.userDetails);
         let devopsSection = evolveSections.find((section) => section.title === 'devops');
         let devopPageMenuItem = {...devopsSection};
         devopPageMenuItem.subtitle = '';
@@ -104,6 +106,7 @@ export default class Quiz extends Component {
                                 <h1>You have completed the quiz!</h1>
                                 <p>Your score is: {score} of {Object.keys(questions).length}</p>
                                 <p>Thank you!</p>
+                                <UpdateUserButton score={score} userDetails={this.props.userDetails}/>
                             </div>
                         )
                     }

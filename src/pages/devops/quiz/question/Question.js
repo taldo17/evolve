@@ -3,7 +3,7 @@ import './Question.css';
 
 const Question = (props) => {
     return (
-        <h1>{props.question}</h1>
+        <h1 className='question'>{props.question}</h1>
     );
 }
 

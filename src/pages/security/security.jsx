@@ -16,17 +16,10 @@ const Security = (props) => {
         history.push('/');
     }
     const history = useHistory();
-    let securitySection = evolveSections.find((section) => section.title === 'security');
-    securitySection.subtitle = '';
-    const securityRankItem = {...securitySection}
-    if (props.userDetails !== undefined) {
-        securityRankItem.title = props.userDetails.evolveUser.securityLevel;
-    }
-    securityRankItem.subtitle = 'CHALLENGE ME'
+
     return (
         <div>
             <div>
-                <MenuItem id={securitySection.id} {...securitySection}/>
                 {
                     props.userDetails ? <div>
                         <CustomButton type='button' onClick={onUpdateScoreClicked}>UPDATE SCORE</CustomButton>

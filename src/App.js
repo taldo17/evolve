@@ -59,9 +59,8 @@ export function App({firebaseConfig}) {
                     <Security  userDetails={userDetails}/>
                 </Route>
                 <Route exact path='/evolve/devops/quiz'>
-                    <Quiz/>
+                    <Quiz userDetails={userDetails}/>
                 </Route>
-                {/*evolve/devops/quiz*/}
             </Switch>
         </Router>
     );
