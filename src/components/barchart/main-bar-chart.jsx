@@ -16,13 +16,13 @@ const MainBarChart = (props) => {
                          datasets: [{
                              label: 'ME',
                              data: [userStatistics.architectureScore, userStatistics.securityScore, userStatistics.devopsScore,
-                                 userStatistics.codeFeScore],
+                                 userStatistics.codeFEScore, userStatistics.codeBEScore],
                              backgroundColor: 'orange',
                          },
                              {
                                  label: 'PTU',
                                  data: [secondLevelGroup.architectureScore, secondLevelGroup.securityScore, secondLevelGroup.devopsScore,
-                                     secondLevelGroup.codeFeScore],
+                                     secondLevelGroup.codeFEScore, userStatistics.codeBEScore],
                                  backgroundColor: 'blue',
                              }
 

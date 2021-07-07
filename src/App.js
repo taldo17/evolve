@@ -32,19 +32,10 @@ export function App({firebaseConfig}) {
             console.log('authInfo authInfo=', authInfo);
             let newUserDetails = await getUserDetails(authInfo.user.uid);
             console.log('authInfo was changed newUserDetails=', newUserDetails);
-            // newUserDetails = {
-            //     evolveUser: {profileImageLink: `https://storage.googleapis.com/${firebaseConfig.storageBucket}/profilePictures/headshot.png`},
-            //     graphDetails: {
-            //         dataLabels: "dddggggg",
-            //         label1: "dddd",
-            //         label1Scores: []
-            //     },
-            // };
             setUserDetails(newUserDetails)
         }
     }, [authInfo])
 
-    console.log("ida1:", userDetails)
     console.log("firebaseConfig:", firebaseConfig)
     return (
         <Router>
@@ -53,10 +44,10 @@ export function App({firebaseConfig}) {
                 <Route path='/signin'>
                     <SignInAndSignUp/>
                 </Route>
-                <Route path='/evolve/devops'>
-                    <Devops/>
+                <Route exact path='/evolve/devops'>
+                    <Devops userDetails={userDetails}/>
                 </Route>
-                <Route path='/' exact>
+                <Route exact path='/'>
                     <Homepage userDetails={userDetails}/>
                 </Route>
             </Switch>

@@ -11,17 +11,17 @@ const DevopsBarChart = (props) => {
                      labels: ['Devops'],
                      datasets: [{
                          label: 'ME',
-                         data: [12],
+                         data: [props.userDetails.statistics.userStatistics.devopsScore],
                          backgroundColor: 'orange',
                      },
                          {
                              label: 'PTU',
-                             data: [15],
+                             data: [props.userDetails.statistics.secondLevelGroup.devopsScore],
                              backgroundColor: 'red',
                          },
                          {
                              label: 'CXONE',
-                             data: [8],
+                             data: [props.userDetails.statistics.firstLevelGroup.devopsScore],
                              backgroundColor: 'blue',
                          }
                      ]
