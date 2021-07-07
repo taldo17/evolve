@@ -22,7 +22,7 @@ export const SignUp = () => {
         }
         try {
             alert('emailValue=' + emailValue + ' passwordValue=' + passwordValue + ' displayName=' + displayName)
-            const {user} = signUp(emailValue, passwordValue);
+            const {user} = await signUp(emailValue, passwordValue);
             await createUserProfileDocument(user, displayName);
             // rout to home page
             history.push('/');
