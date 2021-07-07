@@ -1,6 +1,7 @@
 import './App.css';
 import Homepage from "./pages/homepage/homepage";
 import Devops from "./pages/devops/devops"
+import Security from "./pages/security/security"
 import SignInAndSignUp from "./pages/sign-in-and-sign-up/sign-in-and-sign-up"
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import Header from './components/header/header'
@@ -39,6 +40,7 @@ export function App({firebaseConfig}) {
         }
     }, [authInfo])
 
+    console.log("ida1:", userDetails)
     console.log("firebaseConfig:", firebaseConfig)
     return (
         <Router>
@@ -47,53 +49,18 @@ export function App({firebaseConfig}) {
                 <Route path='/signin'>
                     <SignInAndSignUp/>
                 </Route>
-                <Route exact path='/evolve/devops'>
-                    <Devops userDetails={userDetails}/>
+                <Route path='/evolve/devops'>
+                    <Devops/>
                 </Route>
-                <Route exact path='/'>
+                <Route path='/evolve/security'>
+                    <Security  userDetails={userDetails}/>
+                </Route>
+                <Route path='/' exact>
                     <Homepage userDetails={userDetails}/>
                 </Route>
             </Switch>
         </Router>
     );
 }
-
-// const data = {
-//     evolveUser: {
-//         displayName: 'Tal Doron',
-//         email: 'tal@gmail.com',
-//         profileImageUrl: 'https://storage.googleapis.com/evolve-sparkaton-2021.appspot.com/profilePictures/headshot.png',
-//         firstLevelGroup: 'MCR',
-//         secondLevelGroup: 'PTU'
-//     },
-//     statistics: {
-//         userStatistics: {
-//             devopsLevel: 'NOVICE | SILVER | GOLD | PLATINUM | VIBRANIUM', //calculated
-//             securityLevel: 'NOVICE | SILVER | GOLD | PLATINUM | VIBRANIUM', //calculated
-//             architectureLevel: 'NOVICE | SILVER | GOLD | PLATINUM | VIBRANIUM', //calculated
-//             codeFELevel: 'NOVICE | SILVER | GOLD | PLATINUM | VIBRANIUM',//calculated
-//             codeBELevel: 'NOVICE | SILVER | GOLD | PLATINUM | VIBRANIUM',//calculated
-//             devopsScore: 0,
-//             securityScore: 0,
-//             architectureScore: 0,
-//             codeFEScore: 0,
-//             codeBEScore: 0,
-//         },
-//         firstLevelGroup: {
-//             devopsScore: 0,
-//             securityScore: 0,
-//             architectureScore: 0,
-//             codeFEScore: 0,
-//             codeBEScore: 0,
-//         },
-//         secondLevelGroup: {
-//             devopsScore: 0,
-//             securityScore: 0,
-//             architectureScore: 0,
-//             codeFEScore: 0,
-//             codeBEScore: 0,
-//         }
-//     }
-// }
 
 export default App
