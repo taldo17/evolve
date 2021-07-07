@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import '../components/custom-button/custom-button2.scss'
 
 const StyledInput = styled.input`
     background-color: #a4d22a;
@@ -16,7 +17,7 @@ const StyledInput = styled.input`
 
 export const UploadSingleFileButton = ({ onFileUploaded }) => {
     return (
-        <StyledInput
+        <input className='custom-button'
             type='file'
             accept='image/png, image/jpeg'
             onChange={

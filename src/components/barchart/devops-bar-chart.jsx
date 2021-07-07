@@ -20,7 +20,7 @@ const DevopsBarChart = (props) => {
                              backgroundColor: 'red',
                          },
                          {
-                             label: 'CXONE',
+                             label: 'MCR',
                              data: [props.userDetails.statistics.firstLevelGroup.devopsScore],
                              backgroundColor: 'blue',
                          }

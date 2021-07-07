@@ -82,6 +82,10 @@ export const SignUp = () => {
                 </FormInput>
                 <UploadSingleFileButton
                     onFileUploaded={handleFileSelect}/>
+                {/*<CustomUploadButton*/}
+                {/*    onFileUploaded={handleFileSelect}>*/}
+                {/*    UPLOAD PROFILE IMAGE*/}
+                {/*</CustomUploadButton>*/}
                 <CustomButton type='button' onClick={onSignUpClicked}>SIGN UP</CustomButton>
 
             </form>

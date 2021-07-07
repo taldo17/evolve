@@ -43,6 +43,9 @@ export function App({firebaseConfig}) {
             };
             setUserDetails(newUserDetails)
         }
+        else{
+            setUserDetails(undefined);
+        }
     }, [authInfo])
 
     console.log("ida1:", userDetails)
