@@ -8,6 +8,7 @@ import React, {useEffect, useState} from "react";
 import {addAuthListener, getCurrentUser, ProtectedRoute} from './firebase/auth';
 import {getUserDetails} from './firebase/database';
 import Quiz from "./pages/devops/quiz/QuizMain";
+import Security from "./pages/security/security";
 
 export function App({firebaseConfig}) {
     const [authInfo, setAuthInfo] = useState(() => {
@@ -53,6 +54,9 @@ export function App({firebaseConfig}) {
                 </Route>
                 <Route exact path='/evolve/devops'>
                     <Devops userDetails={userDetails}/>
+                </Route>
+                <Route path='/evolve/security'>
+                    <Security  userDetails={userDetails}/>
                 </Route>
                 <Route exact path='/evolve/devops/quiz'>
                     <Quiz/>
