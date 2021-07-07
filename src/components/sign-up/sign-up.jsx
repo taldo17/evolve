@@ -11,6 +11,8 @@ import 'firebase/auth'
 
 export const SignUp = () => {
     const [displayName, setDisplayName] = useState('');
+    const [firstLevelGroup, setFirstLevelGroup] = useState('');
+    const [secondLevelGroup, setSecondLevelGroup] = useState('');
     const [emailValue, setEmailValue] = useState('');
     const [passwordValue, setPasswordValue] = useState('');
     const [confirmedPasswordValue, setConfirmedPasswordValue] = useState('');
@@ -54,6 +56,22 @@ export const SignUp = () => {
                     value={displayName}
                     onChange={e => setDisplayName(e.target.value)}
                     label='Display Name'
+                    required>
+                </FormInput>
+                <FormInput
+                    type='text'
+                    name='firstLevelGroup'
+                    value={firstLevelGroup}
+                    onChange={e => setFirstLevelGroup(e.target.value)}
+                    label='First Level Group'
+                    required>
+                </FormInput>
+                <FormInput
+                    type='text'
+                    name='secondLevelGroup'
+                    value={secondLevelGroup}
+                    onChange={e => setSecondLevelGroup(e.target.value)}
+                    label='Second Level Group'
                     required>
                 </FormInput>
                 <FormInput
