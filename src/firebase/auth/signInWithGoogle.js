@@ -1,6 +1,6 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
-import {createUserProfileDocument} from "./createUserProfileDocument";
+import {createUserProfileDocument} from "../database/createUserProfileDocument";
 
 const provider = new firebase.auth.GoogleAuthProvider();
 provider.setCustomParameters({prompt: 'select_account'})

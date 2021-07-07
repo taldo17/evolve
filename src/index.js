@@ -28,7 +28,7 @@ firebase.analytics();
 ReactDOM.render(
   <React.StrictMode>
       <BrowserRouter>
-          <App/>
+          <App firebaseConfig={firebaseConfig}/>
       </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')

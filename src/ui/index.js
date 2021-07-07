@@ -2,3 +2,5 @@
 // that are used by the rest of our application. Some are just
 // wrappers for third-party libraries
 export { ErrorMessage } from './ErrorMessage';
+export { UploadSingleFileButton } from './UploadSingleFileButton';
+export { UploadMultipleFilesButton } from './UploadMultipleFilesButton';

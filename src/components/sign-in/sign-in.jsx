@@ -3,7 +3,7 @@ import FormInput from "../form-input/form-input";
 import { useHistory } from 'react-router-dom';
 import './sign-in.scss'
 import CustomButton from "../custom-button/custom-button2";
-import {signInWithGoogle, signIn} from '../../firebase'
+import {signInWithGoogle, signIn} from '../../firebase/auth'
 import {ErrorMessage} from '../../ui';
 import 'firebase/auth'
 
