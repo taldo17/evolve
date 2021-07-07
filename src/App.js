@@ -7,6 +7,7 @@ import Header from './components/header/header'
 import React, {useEffect, useState} from "react";
 import {addAuthListener, getCurrentUser, ProtectedRoute} from './firebase/auth';
 import {getUserDetails} from './firebase/database';
+import Quiz from "./pages/devops/quiz/QuizMain";
 
 export function App({firebaseConfig}) {
     const [authInfo, setAuthInfo] = useState(() => {
@@ -47,12 +48,16 @@ export function App({firebaseConfig}) {
                 <Route path='/signin'>
                     <SignInAndSignUp/>
                 </Route>
-                <Route exact path='/evolve/devops'>
-                    <Devops userDetails={userDetails}/>
-                </Route>
                 <Route exact path='/'>
                     <Homepage userDetails={userDetails}/>
                 </Route>
+                <Route exact path='/evolve/devops'>
+                    <Devops userDetails={userDetails}/>
+                </Route>
+                <Route exact path='/evolve/devops/quiz'>
+                    <Quiz/>
+                </Route>
+                {/*evolve/devops/quiz*/}
             </Switch>
         </Router>
     );

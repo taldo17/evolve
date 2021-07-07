@@ -14,6 +14,7 @@ const Devops = (props) => {
         devopsRankItem.title = props.userDetails.statistics.userStatistics.devopsLevel;
     }
     devopsRankItem.subtitle = 'CHALLENGE ME'
+    devopsRankItem.linkUrl = '/quiz'
     return (
         <div>
             <div>
