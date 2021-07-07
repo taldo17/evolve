@@ -7,10 +7,10 @@ import {updateUserDetails} from "../../firebase/database";
 
 const Security = (props) => {
     const onUpdateScoreClicked = async () => {
-        props.userDetails.statistics.firstLevelGroup.codeBEScore = 81;
-        props.userDetails.statistics.firstLevelGroup.codeFEScore = 33;
-        props.userDetails.statistics.firstLevelGroup.securityScore = 23;
-        props.userDetails.statistics.firstLevelGroup.devopsScore = 105;
+        props.userDetails.statistics.userStatistics.codeBEScore = 81;
+        props.userDetails.statistics.userStatistics.codeFEScore = 33;
+        props.userDetails.statistics.userStatistics.securityScore = 23;
+        props.userDetails.statistics.userStatistics.devopsScore = 105;
         await updateUserDetails(props.userDetails);
         alert('user updated');
     }

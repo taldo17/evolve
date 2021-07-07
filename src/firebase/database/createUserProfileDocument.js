@@ -29,20 +29,6 @@ export const createUserProfileDocument = async (userAuth, displayName, profilePi
                     codeFEScore: 0,
                     codeBEScore: 0,
                 },
-                firstLevelGroup: {
-                    devopsScore: 0,
-                    securityScore: 0,
-                    architectureScore: 0,
-                    codeFEScore: 0,
-                    codeBEScore: 0,
-                },
-                secondLevelGroup: {
-                    devopsScore: 0,
-                    securityScore: 0,
-                    architectureScore: 0,
-                    codeFEScore: 0,
-                    codeBEScore: 0,
-                }
             }
         }
         if (profilePictureFile){

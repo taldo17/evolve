@@ -9,6 +9,8 @@ export const updateUserDetails = async (userDetails) => {
     delete clone.statistics.firstLevelGroup.codeFELevel;
     delete clone.statistics.firstLevelGroup.devopsLevel;
     delete clone.statistics.firstLevelGroup.securityLevel;
+    delete clone.statistics.firstLevelGroup;
+    delete clone.statistics.secondLevelGroup;
     const snapshot = await firebase.firestore()
         .collection('users')
         .doc(clone.id)
