@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import Question from './question/Question';
 import Answer from './answer/Answer';
 import './QuizMain.css';
+import {evolveSections} from "../../../data/data";
+import MenuItem from "../../../components/menu-item/menu-item";
 
 export default class Quiz extends Component {
 
@@ -40,16 +42,17 @@ export default class Quiz extends Component {
         score: 0
     }
 
+
     // the method that checks the correct answer
     checkAnswer = answer => {
-        const { correctAnswers, step, score } = this.state;
-        if(answer === correctAnswers[step]){
+        const {correctAnswers, step, score} = this.state;
+        if (answer === correctAnswers[step]) {
             this.setState({
                 score: score + 1,
                 correctAnswer: correctAnswers[step],
                 clickedAnswer: answer
             });
-        }else{
+        } else {
             this.setState({
                 correctAnswer: 0,
                 clickedAnswer: answer
@@ -66,37 +69,45 @@ export default class Quiz extends Component {
         });
     }
 
-    render(){
-        let { questions, answers, correctAnswer, clickedAnswer, step, score } = this.state;
-        return(
-            <div className="Content">
-                {step <= Object.keys(questions).length ?
-                    (<>
-                        <Question
-                            question={questions[step]}
-                        />
-                        <Answer
-                            answer={answers[step]}
-                            step={step}
-                            checkAnswer={this.checkAnswer}
-                            correctAnswer={correctAnswer}
-                            clickedAnswer={clickedAnswer}
-                        />
-                        <button
-                        className="NextStep"
-                        disabled={
-                            clickedAnswer && Object.keys(questions).length >= step
-                            ? false : true
-                        }
-                        onClick={() => this.nextStep(step)}>Next</button>
-                    </>) : (
-                        <div className="finalPage">
-                            <h1>You have completed the quiz!</h1>
-                            <p>Your score is: {score} of {Object.keys(questions).length}</p>
-                            <p>Thank you!</p>
-                        </div>
-                    )
-                }
+    render(props) {
+        let devopsSection = evolveSections.find((section) => section.title === 'devops');
+        let devopPageMenuItem = {...devopsSection};
+        devopPageMenuItem.subtitle = '';
+        let {questions, answers, correctAnswer, clickedAnswer, step, score} = this.state;
+        return (
+            <div>
+                <MenuItem id={devopPageMenuItem.id} {...devopPageMenuItem}/>
+
+                <div className="Content">
+                    {step <= Object.keys(questions).length ?
+                        (<>
+                            <Question
+                                question={questions[step]}
+                            />
+                            <Answer
+                                answer={answers[step]}
+                                step={step}
+                                checkAnswer={this.checkAnswer}
+                                correctAnswer={correctAnswer}
+                                clickedAnswer={clickedAnswer}
+                            />
+                            <button
+                                className="NextStep"
+                                disabled={
+                                    clickedAnswer && Object.keys(questions).length >= step
+                                        ? false : true
+                                }
+                                onClick={() => this.nextStep(step)}>Next
+                            </button>
+                        </>) : (
+                            <div className="finalPage">
+                                <h1>You have completed the quiz!</h1>
+                                <p>Your score is: {score} of {Object.keys(questions).length}</p>
+                                <p>Thank you!</p>
+                            </div>
+                        )
+                    }
+                </div>
             </div>
         );
     }
