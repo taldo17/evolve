@@ -32,14 +32,14 @@ export function App({firebaseConfig}) {
             console.log('authInfo authInfo=', authInfo);
             let newUserDetails = await getUserDetails(authInfo.user.uid);
             console.log('authInfo was changed newUserDetails=', newUserDetails);
-            newUserDetails = {
-                evolveUser: {profileImageLink: `https://storage.googleapis.com/${firebaseConfig.storageBucket}/profilePictures/headshot.png`},
-                graphDetails: {
-                    dataLabels: "dddggggg",
-                    label1: "dddd",
-                    label1Scores: []
-                },
-            };
+            // newUserDetails = {
+            //     evolveUser: {profileImageLink: `https://storage.googleapis.com/${firebaseConfig.storageBucket}/profilePictures/headshot.png`},
+            //     graphDetails: {
+            //         dataLabels: "dddggggg",
+            //         label1: "dddd",
+            //         label1Scores: []
+            //     },
+            // };
             setUserDetails(newUserDetails)
         }
     }, [authInfo])
@@ -64,42 +64,42 @@ export function App({firebaseConfig}) {
     );
 }
 
-const data = {
-    evolveUser: {
-        displayName: 'Tal Doron',
-        email: 'tal@gmail.com',
-        profileImageUrl: 'https://storage.googleapis.com/evolve-sparkaton-2021.appspot.com/profilePictures/headshot.png',
-        firstLevelGroup: 'MCR',
-        secondLevelGroup: 'PTU'
-    },
-    statistics: {
-        userStatistics: {
-            devopsLevel: 'NOVICE | SILVER | GOLD | PLATINUM | VIBRANIUM', //calculated
-            securityLevel: 'NOVICE | SILVER | GOLD | PLATINUM | VIBRANIUM', //calculated
-            architectureLevel: 'NOVICE | SILVER | GOLD | PLATINUM | VIBRANIUM', //calculated
-            codeFELevel: 'NOVICE | SILVER | GOLD | PLATINUM | VIBRANIUM',//calculated
-            codeBELevel: 'NOVICE | SILVER | GOLD | PLATINUM | VIBRANIUM',//calculated
-            devopsScore: 0,
-            securityScore: 0,
-            architectureScore: 0,
-            codeFEScore: 0,
-            codeBEScore: 0,
-        },
-        firstLevelGroup: {
-            devopsScore: 0,
-            securityScore: 0,
-            architectureScore: 0,
-            codeFEScore: 0,
-            codeBEScore: 0,
-        },
-        secondLevelGroup: {
-            devopsScore: 0,
-            securityScore: 0,
-            architectureScore: 0,
-            codeFEScore: 0,
-            codeBEScore: 0,
-        }
-    }
-}
+// const data = {
+//     evolveUser: {
+//         displayName: 'Tal Doron',
+//         email: 'tal@gmail.com',
+//         profileImageUrl: 'https://storage.googleapis.com/evolve-sparkaton-2021.appspot.com/profilePictures/headshot.png',
+//         firstLevelGroup: 'MCR',
+//         secondLevelGroup: 'PTU'
+//     },
+//     statistics: {
+//         userStatistics: {
+//             devopsLevel: 'NOVICE | SILVER | GOLD | PLATINUM | VIBRANIUM', //calculated
+//             securityLevel: 'NOVICE | SILVER | GOLD | PLATINUM | VIBRANIUM', //calculated
+//             architectureLevel: 'NOVICE | SILVER | GOLD | PLATINUM | VIBRANIUM', //calculated
+//             codeFELevel: 'NOVICE | SILVER | GOLD | PLATINUM | VIBRANIUM',//calculated
+//             codeBELevel: 'NOVICE | SILVER | GOLD | PLATINUM | VIBRANIUM',//calculated
+//             devopsScore: 0,
+//             securityScore: 0,
+//             architectureScore: 0,
+//             codeFEScore: 0,
+//             codeBEScore: 0,
+//         },
+//         firstLevelGroup: {
+//             devopsScore: 0,
+//             securityScore: 0,
+//             architectureScore: 0,
+//             codeFEScore: 0,
+//             codeBEScore: 0,
+//         },
+//         secondLevelGroup: {
+//             devopsScore: 0,
+//             securityScore: 0,
+//             architectureScore: 0,
+//             codeFEScore: 0,
+//             codeBEScore: 0,
+//         }
+//     }
+// }
 
 export default App

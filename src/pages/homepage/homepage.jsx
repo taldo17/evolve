@@ -4,6 +4,7 @@ import './homepage.scss'
 import MainBarChart from "../../components/barchart/main-bar-chart";
 
 const Homepage = (props) => {
+    console.log(`Homepage: ${props.userDetails}`);
     return (
         <div>
             <div className='homepage-menu'>
