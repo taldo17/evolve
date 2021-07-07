@@ -7,3 +7,4 @@ export { getCurrentUser } from './getCurrentUser';
 export { useAuth } from './useAuth';
 export { addAuthListener } from './addAuthListener';
 export { ProtectedRoute } from './ProtectedRoute';
+export { getUserDetails } from './getUserDetails';
