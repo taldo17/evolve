@@ -16,11 +16,14 @@ export const getUserDetails = async id => {
             return 'VIBRANIUM';
         }
     }
-    const snapshot = await firebase.firestore()
+    const getFunction = () => firebase.firestore()
         .collection('users')
         .doc(id)
         .get();
-    const userDetails = snapshot.data();
+    // The reason we do retry only in cases we register and the user document is not finished to write the document to the databse  but the authInfo was already changed
+    const retry = (fn, retries = 3) => fn().then(snapshot => snapshot.data() ? snapshot.data() : retry(fn, retries - 1))
+    const userDetails = await retry(getFunction);
+    console.log('userDetails=', userDetails);
     let architectureLevel = getLevel(userDetails.statistics.firstLevelGroup.architectureScore);
     userDetails.statistics.firstLevelGroup.architectureLevel = architectureLevel;
     let codeBELevel = getLevel(userDetails.statistics.firstLevelGroup.codeBEScore);

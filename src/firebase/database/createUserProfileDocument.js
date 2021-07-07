@@ -23,11 +23,6 @@ export const createUserProfileDocument = async (userAuth, displayName, profilePi
             },
             statistics: {
                 userStatistics: {
-                    devopsLevel: 'NOVICE',
-                    securityLevel: 'NOVICE',
-                    architectureLevel: 'NOVICE',
-                    codeFELevel: 'NOVICE',
-                    codeBELevel: 'NOVICE',
                     devopsScore: 0,
                     securityScore: 0,
                     architectureScore: 0,

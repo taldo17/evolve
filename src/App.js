@@ -1,6 +1,7 @@
 import './App.css';
 import Homepage from "./pages/homepage/homepage";
 import Devops from "./pages/devops/devops"
+import Security from "./pages/security/security"
 import SignInAndSignUp from "./pages/sign-in-and-sign-up/sign-in-and-sign-up"
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import Header from './components/header/header'
@@ -55,6 +56,9 @@ export function App({firebaseConfig}) {
                 </Route>
                 <Route path='/evolve/devops'>
                     <Devops/>
+                </Route>
+                <Route path='/evolve/security'>
+                    <Security  userDetails={userDetails}/>
                 </Route>
                 <Route path='/' exact>
                     <Homepage userDetails={userDetails}/>
