@@ -14,7 +14,7 @@ export const createUserProfileDocument = async (userAuth, displayName, profilePi
         const newUserDocument = {
             displayName: displayName,
             email: userAuth.email,
-            createdDate: creationDate,
+            creationDate: creationDate,
             evolveUser: {
                 displayName: displayName,
                 email: userAuth.email,
