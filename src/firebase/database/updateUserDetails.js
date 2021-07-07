@@ -4,11 +4,11 @@ import 'firebase/auth'
 
 export const updateUserDetails = async (userDetails) => {
     const clone = JSON.parse(JSON.stringify(userDetails));
-    delete clone.statistics.firstLevelGroup.architectureLevel;
-    delete clone.statistics.firstLevelGroup.codeBELevel;
-    delete clone.statistics.firstLevelGroup.codeFELevel;
-    delete clone.statistics.firstLevelGroup.devopsLevel;
-    delete clone.statistics.firstLevelGroup.securityLevel;
+    delete clone.statistics.userStatistics.architectureLevel;
+    delete clone.statistics.userStatistics.codeBELevel;
+    delete clone.statistics.userStatistics.codeFELevel;
+    delete clone.statistics.userStatistics.devopsLevel;
+    delete clone.statistics.userStatistics.securityLevel;
     delete clone.statistics.firstLevelGroup;
     delete clone.statistics.secondLevelGroup;
     const snapshot = await firebase.firestore()

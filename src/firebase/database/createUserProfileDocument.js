@@ -12,8 +12,6 @@ export const createUserProfileDocument = async (userAuth, displayName, profilePi
     if (!userSnapshot.exists) {
         const creationDate = new Date();
         const newUserDocument = {
-            displayName: displayName,
-            email: userAuth.email,
             creationDate: creationDate,
             evolveUser: {
                 displayName: displayName,
