@@ -3,22 +3,18 @@ import 'firebase/firestore'
 import 'firebase/auth'
 import {uploadFile} from '../storage';
 
-export const createUserProfileDocument = async (userAuth, displayName, profilePictureFile) => {
+export const createUserProfileDocument = async (userAuth, evolveUser, profilePictureFile) => {
     console.log('createUserProfileDocument userAuth=', userAuth);
-    console.log('createUserProfileDocument displayName=', displayName);
+    console.log('createUserProfileDocument evolveUser=', evolveUser);
     if (!userAuth) return;
     const userReference = firebase.firestore().doc(`users/${userAuth.uid}`);
     const userSnapshot = await userReference.get();
     if (!userSnapshot.exists) {
         const creationDate = new Date();
         const newUserDocument = {
+            id: userAuth.uid,
             creationDate: creationDate,
-            evolveUser: {
-                displayName: displayName,
-                email: userAuth.email,
-                firstLevelGroup: 'MCR',
-                secondLevelGroup: 'PTU'
-            },
+            evolveUser: evolveUser,
             statistics: {
                 userStatistics: {
                     devopsScore: 0,
@@ -29,7 +25,7 @@ export const createUserProfileDocument = async (userAuth, displayName, profilePi
                 },
             }
         }
-        if (profilePictureFile){
+        if (profilePictureFile) {
             const profileImageLink = await uploadFile(profilePictureFile, 'profilePictures');
             newUserDocument.evolveUser.profileImageLink = profileImageLink;
         }

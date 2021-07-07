@@ -3,7 +3,7 @@ import React, {useState} from 'react'
 import FormInput from "../form-input/form-input";
 import CustomButton from "../custom-button/custom-button2";
 import {signUp} from "../../firebase/auth";
-import {createUserProfileDocument} from "../../firebase/database";
+import {createUserProfileDocument, getGroupScores} from "../../firebase/database";
 import './sign-up.scss'
 import {useHistory} from "react-router-dom";
 import {ErrorMessage, UploadSingleFileButton} from "../../ui";
@@ -24,10 +24,25 @@ export const SignUp = () => {
             alert("Password don't match")
             return;
         }
+        const firstGroup = await getGroupScores(firstLevelGroup)
+        if (!firstGroup) {
+            alert("First Group doesn't exists")
+            return;
+        }
+        const secondGroup = await getGroupScores(secondLevelGroup)
+        if (!secondGroup) {
+            alert("Second Group doesn't exists")
+            return;
+        }
         try {
-            alert('emailValue=' + emailValue + ' passwordValue=' + passwordValue + ' displayName=' + displayName)
             const {user} = await signUp(emailValue, passwordValue);
-            await createUserProfileDocument(user, displayName, profilePictureFile);
+            const evolveUser ={
+                displayName: displayName,
+                email: user.email,
+                firstLevelGroup,
+                secondLevelGroup
+            }
+            await createUserProfileDocument(user, evolveUser, profilePictureFile);
             // rout to home page
             history.push('/');
         } catch (e) {
@@ -62,7 +77,7 @@ export const SignUp = () => {
                     type='text'
                     name='firstLevelGroup'
                     value={firstLevelGroup}
-                    onChange={e => setFirstLevelGroup(e.target.value)}
+                    onChange={e => setFirstLevelGroup(e.target.value.toUpperCase())}
                     label='First Level Group'
                     required>
                 </FormInput>
@@ -70,7 +85,7 @@ export const SignUp = () => {
                     type='text'
                     name='secondLevelGroup'
                     value={secondLevelGroup}
-                    onChange={e => setSecondLevelGroup(e.target.value)}
+                    onChange={e => setSecondLevelGroup(e.target.value.toUpperCase())}
                     label='Second Level Group'
                     required>
                 </FormInput>
