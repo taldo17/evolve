@@ -4,6 +4,7 @@ import DevopsBarChart from "../../components/barchart/devops-bar-chart";
 import CustomizedTimeline from "../../components/track/track";
 import MenuItem from "../../components/menu-item/menu-item";
 import {evolveSections} from "../../data/data";
+import Quote from "../../components/quotes/quotes";
 
 const Devops = (props) => {
     let devopsSection = evolveSections.find((section) => section.title === 'devops');
@@ -28,6 +29,7 @@ const Devops = (props) => {
                     </div> : undefined
                 }
                 <CustomizedTimeline/>
+                <Quote/>
             </div>
         </div>
     )
